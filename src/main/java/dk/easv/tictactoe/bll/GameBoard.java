@@ -5,11 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 /**
- *
  * @author EASV
  */
-public class GameBoard implements IGameBoard
-{
+public class GameBoard implements IGameBoard {
 
     private int[][] board;
     private int currentPlayer = 0;
@@ -20,18 +18,16 @@ public class GameBoard implements IGameBoard
     }
 
     /**
-     *
      * Returns 0 for player 0, 1 for player 1.
      *
      * @return int Id of the next player.
      */
 
 
-
     public int getNextPlayer() {
 
 
-        switch (currentPlayer){
+        switch (currentPlayer) {
 
             case 0:
                 currentPlayer = 1;
@@ -59,10 +55,9 @@ public class GameBoard implements IGameBoard
      * @return true if the move is accepted, otherwise false. If gameOver == true
      * this method will always return false.
      */
-    public boolean play(int col, int row)
-    {
+    public boolean play(int col, int row) {
 
-        if(isGameOver()){
+        if (isGameOver()) {
 
             return false;
         }
@@ -88,15 +83,12 @@ public class GameBoard implements IGameBoard
      *
      * @return true if the game is over, else it will retun false.
      */
-    public boolean isGameOver()
-    {
-        if (getWinner() == 1 || getWinner() == 0 || getWinner() == -1){
+    public boolean isGameOver() {
+        if (getWinner() == 1 || getWinner() == 0 || getWinner() == -1) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
-
 
     }
 
@@ -105,8 +97,7 @@ public class GameBoard implements IGameBoard
      *
      * @return int id of winner, or -1 if draw.
      */
-    public int getWinner()
-    {
+    public int getWinner() {
         // Check rows
         for (int i = 0; i < 3; i++) {
             if (board[i][0] != -1 && board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
@@ -141,24 +132,20 @@ public class GameBoard implements IGameBoard
             }
         }
 
-        if (draw){
+        if (draw) {
             return -1;
         }
 
         return 2;
 
 
-
     }
-
-
 
 
     /**
      * Resets the game to a new game state.
      */
-    public void newGame()
-    {
+    public void newGame() {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
