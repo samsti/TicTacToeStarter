@@ -11,16 +11,23 @@ import javafx.scene.control.Button;
 public class GameBoard implements IGameBoard
 {
 
-    @FXML
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
+    private int[][] board;
+    private int currentPlayer;
 
-    int [][] board = new int[3][3];
+    public GameBoard() {
+        board = new int[3][3];
+        newGame();
+    }
 
     /**
+     *
      * Returns 0 for player 0, 1 for player 1.
      *
      * @return int Id of the next player.
      */
+
+
+
     public int getNextPlayer()
     {
         //TODO Implement this method
@@ -39,19 +46,11 @@ public class GameBoard implements IGameBoard
      */
     public boolean play(int col, int row)
     {
-
         if (col < 0 || col > 2 || row < 0 || row > 2) {
             return false;
         }
 
-        if(board[col][row] != -1){
-            return false;
-        }
-        else {
-            board[col][row] = getNextPlayer();
-        }
-
-        if(isGameOver() == true){
+        if(isGameOver()){
 
             return false;
         }
@@ -87,11 +86,14 @@ public class GameBoard implements IGameBoard
      */
     public void newGame()
     {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
-                board[row][col] = -1;  // Set all elements to -1, to represent the empty cells
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = -1; // -1 indicates an empty cell
             }
         }
+        currentPlayer = 0;
 
     }
+
 }

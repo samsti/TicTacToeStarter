@@ -31,7 +31,10 @@ public class TicTacViewController implements Initializable
     @FXML
     private GridPane gridPane;
 
+    @FXML
+    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
 
+    public Button[][] buttonGrid = new Button[3][3];
     
     private static final String TXT_PLAYER = "Player: ";
     private IGameBoard game;
@@ -102,8 +105,20 @@ public class TicTacViewController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
 
+        buttonGrid[0][0] = btn1;  // First row, first column
+        buttonGrid[0][1] = btn2;  // First row, second column
+        buttonGrid[0][2] = btn3;  // First row, third column
+        buttonGrid[1][0] = btn4;  // Second row, first column
+        buttonGrid[1][1] = btn5;  // Second row, second column
+        buttonGrid[1][2] = btn6;  // Second row, third column
+        buttonGrid[2][0] = btn7;  // Third row, first column
+        buttonGrid[2][1] = btn8;  // Third row, second column
+        buttonGrid[2][2] = btn9;  // Third row, third column
+
         game = new GameBoard();
         setPlayer();
+
+
     }
 
     /**
