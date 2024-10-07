@@ -12,7 +12,7 @@ public class GameBoard implements IGameBoard
 {
 
     private int[][] board;
-    private int currentPlayer;
+    private int currentPlayer = 0;
 
     public GameBoard() {
         board = new int[3][3];
@@ -28,11 +28,26 @@ public class GameBoard implements IGameBoard
 
 
 
-    public int getNextPlayer()
-    {
-        //TODO Implement this method
-        return 0;
+    public int getNextPlayer() {
+
+
+        switch (currentPlayer){
+
+            case 0:
+                currentPlayer = 1;
+                break;
+
+            case 1:
+                currentPlayer = 0;
+                break;
+
+        }
+        System.out.println(currentPlayer);
+
+
+        return currentPlayer;
     }
+
 
     /**
      * Attempts to let the current player play at the given coordinates. If the
@@ -46,14 +61,23 @@ public class GameBoard implements IGameBoard
      */
     public boolean play(int col, int row)
     {
-        if (col < 0 || col > 2 || row < 0 || row > 2) {
-            return false;
-        }
 
         if(isGameOver()){
 
             return false;
         }
+
+        if (col < 0 || col > 2 || row < 0 || row > 2) {
+            return false;
+        }
+
+        if (board[row][col] != -1) { // -1 means empty
+
+            return false;
+        }
+        getNextPlayer();
+
+        board[row][col] = currentPlayer;
 
         return true;
     }
@@ -92,8 +116,6 @@ public class GameBoard implements IGameBoard
                 board[i][j] = -1; // -1 indicates an empty cell
             }
         }
-        currentPlayer = 0;
-        //asdsada
 
     }
 
