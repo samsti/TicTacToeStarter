@@ -54,7 +54,7 @@ public class GameBoard implements IGameBoard
         if(isGameOver() == true){
 
             return false;
-        }
+        } //
 
         return true;
     }
