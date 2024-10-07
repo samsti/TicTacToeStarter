@@ -58,7 +58,7 @@ public class TicTacViewController implements Initializable
             int r = (row == null) ? 0 : row;
             int c = (col == null) ? 0 : col;
             int player = game.getNextPlayer();
-            String xOrO = player == 0 ? "X" : "O";
+            String xOrO = player == 0 ? "❌" : "⭕";
             Button btn = (Button) event.getSource();
             if (game.play(c, r))
             {
