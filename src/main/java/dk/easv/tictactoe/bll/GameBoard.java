@@ -70,9 +70,10 @@ public class GameBoard implements IGameBoard {
 
             return false;
         }
-        getNextPlayer();
 
         board[row][col] = currentPlayer;
+
+        getNextPlayer();
 
         return true;
     }
@@ -140,7 +141,6 @@ public class GameBoard implements IGameBoard {
 
 
     }
-
 
     /**
      * Resets the game to a new game state.

@@ -53,9 +53,20 @@ public class TicTacViewController implements Initializable {
             Integer col = GridPane.getColumnIndex((Node) event.getSource());
             int r = (row == null) ? 0 : row;
             int c = (col == null) ? 0 : col;
+
+            Button btn = (Button) event.getSource();
+
+            if (!btn.getText().isEmpty()) {
+                return;  // Do nothing if button is already clicked
+            }
+
             int player = game.getNextPlayer();
             String xOrO = player == 0 ? "❌" : "⭕";
-            Button btn = (Button) event.getSource();
+
+            if (!btn.getText().isEmpty()) {
+                return;  // Handles if the button was clicked
+            }
+
             if (game.play(c, r)) {
                 btn.setStyle("-fx-font-size: 33px;");
                 btn.setText(xOrO);
@@ -80,6 +91,8 @@ public class TicTacViewController implements Initializable {
      */
     @FXML
     private void handleNewGame(ActionEvent event) {
+
+
         game.newGame();
         setPlayer();
         clearBoard();
