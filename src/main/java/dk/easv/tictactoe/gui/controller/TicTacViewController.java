@@ -57,7 +57,7 @@ public class TicTacViewController implements Initializable {
             String xOrO = player == 0 ? "❌" : "⭕";
             Button btn = (Button) event.getSource();
             if (game.play(c, r)) {
-                btn.setStyle("-fx-font-size: 35px;");
+                btn.setStyle("-fx-font-size: 33px;");
                 btn.setText(xOrO);
 
                 if (game.isGameOver()) {
