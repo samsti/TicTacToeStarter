@@ -61,7 +61,7 @@ public class TicTacViewController implements Initializable {
             }
 
             int player = game.getNextPlayer();
-            String xOrO = player == 0 ? "❌" : "⭕";
+            String xOrO = player == 0 ? "X" : "O";
 
             if (!btn.getText().isEmpty()) {
                 return;  // Handles if the button was clicked
@@ -109,15 +109,15 @@ public class TicTacViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        buttonGrid[0][0] = btn1;  // First row, first column
-        buttonGrid[0][1] = btn2;  // First row, second column
-        buttonGrid[0][2] = btn3;  // First row, third column
-        buttonGrid[1][0] = btn4;  // Second row, first column
-        buttonGrid[1][1] = btn5;  // Second row, second column
-        buttonGrid[1][2] = btn6;  // Second row, third column
-        buttonGrid[2][0] = btn7;  // Third row, first column
-        buttonGrid[2][1] = btn8;  // Third row, second column
-        buttonGrid[2][2] = btn9;  // Third row, third column
+        buttonGrid[0][0] = btn1;
+        buttonGrid[0][1] = btn2;
+        buttonGrid[0][2] = btn3;
+        buttonGrid[1][0] = btn4;
+        buttonGrid[1][1] = btn5;
+        buttonGrid[1][2] = btn6;
+        buttonGrid[2][0] = btn7;
+        buttonGrid[2][1] = btn8;
+        buttonGrid[2][2] = btn9;
 
         game = new GameBoard();
         setPlayer();
