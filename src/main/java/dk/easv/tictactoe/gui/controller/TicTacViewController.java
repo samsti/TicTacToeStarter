@@ -1,8 +1,6 @@
 
 package dk.easv.tictactoe.gui.controller;
 
-// Java imports
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -14,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
-// Project imports
 import dk.easv.tictactoe.bll.GameBoard;
 import dk.easv.tictactoe.bll.IGameBoard;
 
@@ -26,8 +23,11 @@ public class TicTacViewController implements Initializable {
     @FXML
     private Label lblPlayer;
 
-    @FXML
-    private Button btnNewGame;
+    private String player1;
+    private String player2;
+
+    private int count = 0;
+
 
     @FXML
     private GridPane gridPane;
@@ -37,7 +37,6 @@ public class TicTacViewController implements Initializable {
 
     public Button[][] buttonGrid = new Button[3][3];
 
-    private static final String TXT_PLAYER = "Player: ";
     private IGameBoard game;
 
 
@@ -76,7 +75,7 @@ public class TicTacViewController implements Initializable {
                     displayWinner(winner);
                 } else {
                     btn.setText(xOrO);
-                    setPlayer();
+                    setPlayer(player1, player2);
                 }
             }
         } catch (Exception e) {
@@ -94,7 +93,7 @@ public class TicTacViewController implements Initializable {
 
 
         game.newGame();
-        setPlayer();
+        setPlayer(player1, player2);
         clearBoard();
     }
 
@@ -120,7 +119,7 @@ public class TicTacViewController implements Initializable {
         buttonGrid[2][2] = btn9;
 
         game = new GameBoard();
-        setPlayer();
+        setPlayer(player1, player2);
 
 
     }
@@ -128,8 +127,23 @@ public class TicTacViewController implements Initializable {
     /**
      * Set the next player
      */
-    private void setPlayer() {
-        lblPlayer.setText(TXT_PLAYER + game.getNextPlayer());
+    public void setPlayer(String player1, String player2) {
+
+        this.player1 = player1;
+        this.player2 = player2;
+
+        if (count % 2 == 0){
+            lblPlayer.setText(player1);
+            game.getNextPlayer();
+
+        }
+        else {
+            lblPlayer.setText(player2);
+            game.getNextPlayer();
+        }
+
+
+        count++;
     }
 
 
@@ -145,7 +159,12 @@ public class TicTacViewController implements Initializable {
                 message = "It's a draw :-(";
                 break;
             default:
-                message = "Player " + winner + " wins!!!";
+                if (winner == 0) {
+                    message = "Player " + player1 + " wins!!!";
+                }
+                else  {
+                    message = "Player " + player2 + " wins!!!";
+                }
                 break;
         }
         lblPlayer.setText(message);

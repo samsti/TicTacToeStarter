@@ -22,16 +22,17 @@ public class TicTacToe extends Application
      * @throws Exception
      */
     @Override
-    public void start(Stage stage) throws Exception
-    {
+    public void start(Stage stage) throws Exception {
+        // Load the initial window (nameWindow.fxml) to input usernames
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/views/TicTacView.fxml"));
+        loader.setLocation(getClass().getResource("/views/nameWindow.fxml"));
         Parent scene = loader.load();
+
+        // Set up the scene and stage for the initial window
         stage.setScene(new Scene(scene));
         stage.setResizable(false);
         stage.setTitle("Tic Tac Toe");
         stage.centerOnScreen();
-
         stage.show();
     }
 

@@ -10,12 +10,15 @@ import javafx.scene.control.Button;
 public class GameBoard implements IGameBoard {
 
     private int[][] board;
+
     private int currentPlayer = 0;
 
     public GameBoard() {
         board = new int[3][3];
         newGame();
     }
+
+
 
     /**
      * Returns 0 for player 0, 1 for player 1.
@@ -138,8 +141,6 @@ public class GameBoard implements IGameBoard {
         }
 
         return 2;
-
-
     }
 
     /**
